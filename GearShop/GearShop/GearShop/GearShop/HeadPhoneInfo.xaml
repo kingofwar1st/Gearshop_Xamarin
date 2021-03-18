@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GearShop.HeadPhoneInfo" NavigationPage.HasBackButton="False">
+   <Shell.TitleView>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,18,15,0">
+        <Label Text="Chi tiết sản phẩm" HorizontalOptions="Center" FontSize="15" TextColor="White" FontAttributes="Bold"/>
+    </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image Source="{Binding headPhone.Hinh}" HorizontalOptions="Center" Margin="0,5,0,0"/>
+                <Frame BorderColor="#bd452d" Margin="0,10,0,0" Padding="10">
+                    <StackLayout>
+                        <Label Margin="0,10,0,0" Padding="10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Tên của CPU: "/>
+                                    <Span Text="{Binding headPhone.Name}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="0,8,0,0" Padding="10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Hãng sản xuất: "/>
+                                    <Span Text="{Binding headPhone.Brands.Name}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="0,8,0,0" Padding="10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Giá tiền: "/>
+                                    <Span Text="{Binding headPhone.Price,StringFormat='{0:0,0 đ}'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="0,8,0,0" Padding="10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Thời gian bảo hành: "/>
+                                    <Span Text="{Binding headPhone.Warranty,StringFormat='{0:0}'}"/>
+                                    <Span Text=" tháng"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="0,8,0,0" Padding="10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Tình trạng của sản phẩm: "/>
+                                    <Span Text="{Binding headPhone.Status,StringFormat='{0:0}'}"/>
+                                    <Span Text="%"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="#bd452d" Margin="0,10,0,0" Padding="10">
+                    <Label Text="Chưa có đánh giá" FontAttributes="Bold"/>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

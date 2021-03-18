@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GearShop.GioHang"  xmlns:converters="clr-namespace:GearShop.Converter" NavigationPage.HasBackButton="False">
+    <Shell.TitleView >
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,18,15,0">
+        <Label Text="Giỏ hàng" HorizontalOptions="Center" FontSize="15" TextColor="White" FontAttributes="Bold"/>
+    </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ColorStatus x:Key="Statuscolor"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ListView  HasUnevenRows="True" x:Name="Listcpu">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="White" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="5">
+                                    <Image Source="{Binding Hinh}" HeightRequest="120" HorizontalOptions="Center" />
+                                </StackLayout>
+                                <Label Text="{Binding Name}" Grid.Column="1" Grid.Row="0"/>
+                                <Label Text="{Binding Price,StringFormat='{0:0,0 đ}'}" Grid.Column="1" x:Name="Price" Grid.Row="1"/>
+                                <Label Text="{Binding Brands.Name}" Grid.Column="1" Grid.Row="2" />
+                                <Label TextColor="{Binding Status,Converter={StaticResource Statuscolor}}" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Tình trạng: "/>
+                                            <Span Text="{Binding Status,StringFormat='{0:0}'}"/>
+                                            <Span Text="%"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label  Grid.Column="1" Grid.Row="4">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Bảo hành: "/>
+                                            <Span Text="{Binding Warranty,StringFormat='{0:0}'}"/>
+                                            <Span Text=" tháng"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Margin="10,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Tổng tiền: " Grid.Column="0" Grid.Row="0" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="All"  Text="{Binding Tong, StringFormat='{0:0,0 đ}'}" Grid.Row="0" FontSize="20"  Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

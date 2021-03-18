@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GearShop.Chat" NavigationPage.HasBackButton="False" >
+    <Shell.TitleView >
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,18,5,0">
+            <Label Text="Chat" HorizontalOptions="Center" FontSize="15" TextColor="White" FontAttributes="Bold"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Image Source="tuvan.png"/>
+        </StackLayout>
+        <Frame BorderColor="Red" CornerRadius="5" Padding="8">
+            <Label Text="Chat với nhân viên tư vấn"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+        </Frame>
+        <StackLayout>
+            <Entry Placeholder="Nhập nội dung chat vào đây"
+                   HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

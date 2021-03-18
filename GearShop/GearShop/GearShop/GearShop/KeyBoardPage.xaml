@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GearShop.ViewModel"
+             x:Class="GearShop.KeyBoardPage"  xmlns:converters="clr-namespace:GearShop.Converter" NavigationPage.HasBackButton="False"
+            >
+    <Shell.TitleView >
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,18,15,0">
+            <Label Text="Bàn phím" HorizontalOptions="Center" FontSize="15" TextColor="White" FontAttributes="Bold"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ColorStatus x:Key="Statuscolor"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <AbsoluteLayout>
+        <Grid VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout BackgroundColor="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <SearchBar x:Name="Timkiem" TextChanged="Timkiem_TextChanged" Placeholder="Tìm kiếm sản phẩm" CancelButtonColor="Gray"/>
+                    <Button Text="Lọc" Grid.Column="1" BackgroundColor="White" Clicked="Loc_Clicked"/>
+                </Grid>
+                <ScrollView Orientation="Horizontal" x:Name="scroll" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                    <StackLayout Orientation="Horizontal"  HeightRequest="35"  x:Name="Brand"/>
+                </ScrollView>
+                <ListView HeightRequest="100" ItemTapped="CPUlist_ItemTapped"  HasUnevenRows="True" x:Name="KeyBoardlist" SeparatorColor="#bd452d" ItemsSource="{Binding  keyBoards}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30*"/>
+                                            <ColumnDefinition Width="40*"/>
+                                            <ColumnDefinition Width="30*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="5">
+                                            <Image Source="{Binding Hinh}" HeightRequest="120" HorizontalOptions="Center" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Name}" Grid.Column="1" Grid.Row="0"/>
+                                        <Label Text="{Binding Price,StringFormat='{0:0,0 đ}'}" Grid.Column="1" Grid.Row="1"/>
+                                        <Label Text="{Binding Brands.Name}" Grid.Column="1" Grid.Row="2" />
+                                        <Label  TextColor="{Binding Status,Converter={StaticResource Statuscolor}}" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Tình trạng: "/>
+                                                    <Span Text="{Binding Status,StringFormat='{0:0}'}"/>
+                                                    <Span Text="%"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label  Grid.Column="1" Grid.Row="4">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Bảo hành: "/>
+                                                    <Span Text="{Binding Warranty,StringFormat='{0:0}'}"/>
+                                                    <Span Text=" tháng"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <StackLayout Grid.Column="2" Grid.RowSpan="5" VerticalOptions="Center"  >
+                                            <Button Text="+" Clicked="Buy_Clicked" CommandParameter="{Binding .}" TextColor="White" BackgroundColor="#1E90FF" CornerRadius="18" HeightRequest="36" WidthRequest="36"    VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+            <Frame Margin="5" Padding="0" CornerRadius="22" BackgroundColor="White" BorderColor="#bd452d">
+                <ImageButton Source="trolley.png" BackgroundColor="White" WidthRequest="44" HeightRequest="44" CornerRadius="22" Clicked="GotoGH_Clicked" />
+            </Frame>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

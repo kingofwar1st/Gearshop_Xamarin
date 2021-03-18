@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GearShop.AddGear" >
+    <Shell.TitleView>
+        <StackLayout  VerticalOptions="Center" HorizontalOptions="Center" Margin="0,18,15,0">
+            <Label Text="Bán hàng" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" TextColor="White" FontAttributes="Bold"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout>
+        <Frame Margin="10,15,10,0" x:Name="cpu" BackgroundColor="#F4A460" CornerRadius="30" HeightRequest="60" WidthRequest="60" >
+            <Grid Margin="15,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="cpuicon.png" Grid.Column="0"/>
+                <Label Text="CPU" Grid.Column="1" Margin="10,15,0,0" TextColor="Black" FontSize="18"/>
+            </Grid>
+        </Frame>
+        <Frame Margin="10,15,10,0" x:Name="kb" CornerRadius="30" BackgroundColor="#FFB90F" HeightRequest="60" WidthRequest="60" >
+            <Grid Margin="15,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="keyboardicon.png" Grid.Column="0"/>
+                <Label Text="Bàn phím" Grid.Column="1" Margin="10,15,0,0" TextColor="Black" FontSize="18"/>
+            </Grid>
+        </Frame>
+        
+        <Frame Margin="10,15,10,0" x:Name="hp" CornerRadius="30" BackgroundColor="#436EEE" HeightRequest="60" WidthRequest="60" >
+            <Grid Margin="15,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="headphoneicon.png" Grid.Column="0"/>
+                <Label Text="Tai nghe" Grid.Column="1" Margin="10,15,0,0" TextColor="Black" FontSize="18"/>
+            </Grid>
+        </Frame>
+    </StackLayout>
+</ContentPage>

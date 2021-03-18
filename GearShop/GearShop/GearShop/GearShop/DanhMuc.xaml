@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GearShop.DanhMuc"
+       xmlns:views="clr-namespace:GearShop" 
+      BackgroundColor="#bd452d">
+    <Shell.Resources>
+      <ResourceDictionary>
+        <Style x:Key="MyBaseStyle" TargetType="Element">
+          <Setter Property="Shell.TabBarBackgroundColor" Value="#bd452d"></Setter>
+          <Setter Property="Shell.TabBarTitleColor"
+            Value="#bd452d" />
+                  </Style>
+        <Style x:Key="BaseStyle"
+       TargetType="Element">
+          <Setter Property="Shell.TitleColor" Value="#bd452d"/>
+            <Setter Property="Shell.TabBarTitleColor"
+            Value="#bd452d" />
+            <Setter Property="Shell.TabBarBackgroundColor"
+            Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+            Value="#5C5858 "/>
+        </Style>
+        <Style TargetType="TabBar" BasedOn="{StaticResource MyBaseStyle}"></Style>
+      </ResourceDictionary>
+    </Shell.Resources>
+
+
+    <TabBar>
+        <Tab Title="Trang chủ" x:Name="TabTrangChu" Icon="home.png">
+            <ShellContent
+                Style="{StaticResource BaseStyle}"
+                ContentTemplate="{DataTemplate views:MainPage}">
+            </ShellContent>
+        </Tab>
+        <Tab Title="Bán hàng" x:Name="TabBanHang" Icon="sell.png">
+            <ShellContent
+                Style="{StaticResource BaseStyle}"
+                ContentTemplate="{DataTemplate views:AddGear}">
+            </ShellContent>
+        </Tab>
+        <Tab Title="Cá nhân" x:Name="TabCaNhan" Icon="face.png">
+            <ShellContent
+                Style="{StaticResource BaseStyle}"
+                ContentTemplate="{DataTemplate views:Login}">
+            </ShellContent>
+        </Tab>
+       
+    </TabBar>
+</Shell>
